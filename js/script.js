@@ -29,4 +29,8 @@ links.forEach(link => {
         // Dodaj klasę 'active' do znalezionego artykułu
         selectedArticle.classList.add('active');
     });
+    document.getElementById('test-button').addEventListener('click', function(){
+        const links = document.querySelectorAll('.titles a');
+        console.log('links:', links);
+      });
 });
