@@ -1,7 +1,7 @@
 const titleClickHandler = function(event){
-    const clickedElement = this;
     event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu linku
   
+    const clickedElement = this;
     console.log('Link was clicked!');
     console.log(clickedElement);
   
