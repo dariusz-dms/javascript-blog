@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const titleClickHandler = function(event){
+      // Kod obsługi kliknięcia linku
       event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu linku
   
       const clickedElement = this;
@@ -35,5 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
     for(let link of links){
       link.addEventListener('click', titleClickHandler);
     }
-  });
   
+    // Dodatkowy fragment
+    const allLinks = document.querySelectorAll('.titles a');
+    for (let link of allLinks) {
+      console.log(link);
+    }
+  }); 
