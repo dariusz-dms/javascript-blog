@@ -35,3 +35,4 @@ links.forEach(link => {
         // Dodaj klasę 'active' do znalezionego artykułu
         selectedArticle.classList.add('active');
     });
+});
