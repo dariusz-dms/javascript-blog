@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link.addEventListener('click', titleClickHandler);
     }
   
-    const titleClickHandler = function(event){
+    const handleLinkClick = function(event){
       // Kod obsługi kliknięcia linku
       event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu linku
   
