@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const titleClickHandler = function(event){
       console.log('Link was clicked!');
     }
+    const links = document.querySelectorAll('.titles a');
+  
+    for(let link of links){
+      link.addEventListener('click', titleClickHandler);
+    }
       const handleLinkClick = function(event){
       // Kod obsługi kliknięcia linku
       event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu linku
@@ -34,11 +39,5 @@ document.addEventListener('DOMContentLoaded', function() {
       /* add class 'active' to the correct article */
       selectedArticle.classList.add('active');
     };
-
-    const links = document.querySelectorAll('.titles a');
-  
-    for(let link of links){
-      link.addEventListener('click', titleClickHandler);
-    }
-  
+    
   });
