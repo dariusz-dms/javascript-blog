@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const titleClickHandler = function(){
+      console.log('Link was clicked!');
+    }
+  
+    const links = document.querySelectorAll('.titles a');
+  
+    for(let link of links){
+      link.addEventListener('click', titleClickHandler);
+    }
+  
     const titleClickHandler = function(event){
       // Kod obsługi kliknięcia linku
       event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu linku
@@ -31,15 +41,4 @@ document.addEventListener('DOMContentLoaded', function() {
       // Dodaj klasę 'active' do znalezionego artykułu
       selectedArticle.classList.add('active');
     };
-  
-    const links = document.querySelectorAll('.titles a');
-    for(let link of links){
-      link.addEventListener('click', titleClickHandler);
-    }
-  
-    // Dodatkowy fragment
-    const allLinks = document.querySelectorAll('.titles a');
-    for (let link of allLinks) {
-      console.log(link);
-    }
-  }); 
+  });
