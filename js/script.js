@@ -1,10 +1,17 @@
 // Pobierz wszystkie linki do artykułów
 const links = document.querySelectorAll('.article-link');
 
+// Pobierz wszystkie linki po kliknięciu przycisku
+document.getElementById('test-button').addEventListener('click', function(){
+    const links = document.querySelectorAll('.titles a');
+    console.log('links:', links);
+
 // Iteruj przez każdy link i dodaj nasłuchiwanie zdarzenia 'click'
 links.forEach(link => {
     link.addEventListener('click', function(event) {
         event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu linku
+
+    
 
         // Usuń klasę 'active' ze wszystkich linków
         links.forEach(link => {
@@ -29,8 +36,5 @@ links.forEach(link => {
         // Dodaj klasę 'active' do znalezionego artykułu
         selectedArticle.classList.add('active');
     });
-    document.getElementById('test-button').addEventListener('click', function(){
-        const links = document.querySelectorAll('.titles a');
-        console.log('links:', links);
-      });
+    
 });
