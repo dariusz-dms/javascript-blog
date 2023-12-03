@@ -13,8 +13,8 @@ links.forEach(link => {
         event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu linku
 
         // Usuń klasę 'active' ze wszystkich linków
-        links.forEach(link => {
-            link.classList.remove('active');
+        links.forEach(singleLink => {
+            singleLink.classList.remove('active');
         });
 
         // Dodaj klasę 'active' do klikniętego linka
