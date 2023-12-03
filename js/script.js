@@ -5,14 +5,16 @@ const titleClickHandler = function(event){
     console.log('Link was clicked!');
     console.log(clickedElement);
   
-    // Remove class 'active' from all article links
-    const links = document.querySelectorAll('.titles a');
-    links.forEach(link => {
-      link.classList.remove('active');
-    });
-  
     // Add class 'active' to the clicked link
     clickedElement.classList.add('active');
+  
+    // Remove class 'active' from all article links except the clicked one
+    const links = document.querySelectorAll('.titles a');
+    links.forEach(link => {
+      if (link !== clickedElement) {
+        link.classList.remove('active');
+      }
+    });
   
     // Remove class 'active' from all articles
     const articles = document.querySelectorAll('.post');
@@ -33,4 +35,4 @@ const titleClickHandler = function(event){
   const links = document.querySelectorAll('.titles a');
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
-  }  
+  }
