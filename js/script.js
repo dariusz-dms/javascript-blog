@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedArticle = document.querySelector(articleId);
     selectedArticle.classList.add('active');
 
+    const initialTitleList = document.querySelector('.titles');
+    initialTitleList.innerHTML = ''; // Removing initial HTML links
+
+    const titleList = document.querySelector(optTitleListSelector);
+    titleList.innerHTML = clickedElement.parentElement.outerHTML;
+
     generateTitleLinks();
   });
 
@@ -58,4 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
   links.forEach(link => {
     link.addEventListener('click', titleClickHandler);
   });
+
+  const initialTitleList = document.querySelector('.titles');
+  initialTitleList.innerHTML = ''; // Removing initial HTML links
 });
