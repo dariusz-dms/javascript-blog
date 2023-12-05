@@ -67,7 +67,7 @@ generateTitleLinks();
 
 function generateTags() {
   // find all articles
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll('.post');
 
   // START LOOP: for every article:
   articles.forEach(article => {
@@ -84,7 +84,7 @@ function generateTags() {
     const articleTagsArray = articleTags.split('  ');
 
     // START LOOP: for each tag
-    articleTagsArray.forEach(tag => {
+    for(let tag of articleTagsArray){
       // generate HTML of the link
       const tagHTML = `<li><a href="#tag-${tag}">${tag}</a></li>`;
 
