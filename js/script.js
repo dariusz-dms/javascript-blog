@@ -81,7 +81,7 @@ function generateTags() {
     const articleTags = article.getAttribute('data-tags');
 
     // split tags into array
-    const articleTagsArray = articleTags.split(' ');
+    const articleTagsArray = articleTags.split('  ');
 
     // START LOOP: for each tag
     articleTagsArray.forEach(tag => {
