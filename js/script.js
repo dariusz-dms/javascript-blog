@@ -19,6 +19,11 @@ function generateTitleLinks() {
     const titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML += linkHTML;
   });
+
+  const links = document.querySelectorAll('.titles a');
+  links.forEach(link => {
+    link.addEventListener('click', titleClickHandler);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -47,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     selectedArticle.classList.add('active');
 
     generateTitleLinks();
-  };
+  });
 
   const links = document.querySelectorAll('.titles a');
   links.forEach(link => {
