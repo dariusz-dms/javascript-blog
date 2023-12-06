@@ -142,7 +142,7 @@ function tagClickHandler(event){
   generateTitleLinks('[data-tags~="' + tag + '"]');
 
 }
-  // find all links to tags
+// find all links to tags
 function addClickListenersToTags(){
   const tagLinks = document.querySelectorAll('.post-tags a');
 
@@ -155,3 +155,35 @@ function addClickListenersToTags(){
 }
 
 addClickListenersToTags();
+
+function generateAuthors() {
+  // Find all articles
+  const articles = document.querySelectorAll('.post');
+
+  // Iterate through each article to add author data and link
+  articles.forEach(article => {
+    // Here, you can add code to find and extract the author from the article
+    const author = 'John Doe'; // For simplicity, setting a default author 'John Doe'
+
+    // Set the 'data-author' attribute in the article
+    article.setAttribute('data-author', author);
+
+    // Find the wrapper for the author in the article
+    const authorWrapper = article.querySelector('.post-author');
+
+    // Create a new link element for the author
+    const authorLink = document.createElement('a');
+
+    // Set the link's href attribute to a specific author identifier
+    authorLink.setAttribute('href', `#author-${author}`);
+
+    // Set the text content of the author link
+    authorLink.textContent = `by ${author}`;
+
+    // Append the author link to the author wrapper in the article
+    authorWrapper.appendChild(authorLink);
+  });
+}
+
+// Call the function to generate authors for each article
+generateAuthors();
