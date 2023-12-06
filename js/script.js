@@ -163,7 +163,7 @@ function generateAuthors() {
   // Iterate through each article to add author data and link
   articles.forEach(article => {
     // Here, you can add code to find and extract the author from the article
-    const author = 'John Doe'; // For simplicity, setting a default author 'John Doe'
+    const author = (' '); // For simplicity, setting a default author 'John Doe'
 
     // Set the 'data-author' attribute in the article
     article.setAttribute('data-author', author);
