@@ -42,11 +42,11 @@ function titleClickHandler(event){
   selectedArticle.classList.add('active');
 }
 
-function generateTitleLinks() {
+function generateTitleLinks(customSelector = '') {
   clearTitleList();
 
-  // Find all articles
-  const articles = document.querySelectorAll(optArticleSelector);
+  // Find all articles based on the provided customSelector or default selector
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
   // Iterate through each article
   articles.forEach(article => {
@@ -68,7 +68,6 @@ function generateTitleLinks() {
   });
 }
 
-generateTitleLinks();
 
 function generateTags() {
   // find all articles
