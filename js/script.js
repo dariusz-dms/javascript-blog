@@ -93,15 +93,15 @@ function generateTags() {
     const articleTagsArray = articleTags.split(' ');
 
     // START LOOP: for each tag
-    for(let tag of articleTagsArray){
+    for (let tag of articleTagsArray) {
       // generate HTML of the link
       const tagHTML = `<li><a href="#tag-${tag}">${tag}</a></li>`;
 
       // check if this link is NOT already in allTags //
-      if(allTags.indexOf(linkHTML) == -1){
+      if (allTags.indexOf(tagHTML) == -1) {
 
         // add generated code to allTags array //
-        allTags.push(linkHTML);
+        allTags.push(tagHTML);
       }
 
       // add generated code to html variable
