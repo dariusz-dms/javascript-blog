@@ -3,6 +3,7 @@ const optTitleSelector = '.post-title';
 const optTitleListSelector = '.titles';
 const optArticleTagsSelector = '.post-tags .list';
 const optArticleAuthorSelector = '.post-author';
+const optTagsListSelector = '.tags.list';
 
 function clearTitleList() {
   const titleList = document.querySelector(optTitleListSelector);
