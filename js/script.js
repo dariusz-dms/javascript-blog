@@ -2,6 +2,7 @@ const optArticleSelector = '.post';
 const optTitleSelector = '.post-title';
 const optTitleListSelector = '.titles';
 const optArticleTagsSelector = '.post-tags .list';
+const optArticleAuthorSelector = '.post-author';
 
 function clearTitleList() {
   const titleList = document.querySelector(optTitleListSelector);
@@ -156,33 +157,51 @@ function addClickListenersToTags(){
 addClickListenersToTags();
 
 function generateAuthors() {
-  // Find all articles
-  const articles = document.querySelectorAll('.post');
+  const articles = document.querySelectorAll(optArticleSelector);
 
-  // Iterate through each article to add author data and link
   articles.forEach(article => {
-    // Here, you can add code to find and extract the author from the article
-    const author = (' ');
-
-    // Set the 'data-author' attribute in the article
-    article.setAttribute('data-author', author);
-
-    // Find the wrapper for the author in the article
-    const authorWrapper = article.querySelector('.post-author');
-
+    // Find the wrapper element for the author information
+    const authorWrapper = article.querySelector(optArticleAuthorSelector);
     // Create a new link element for the author
     const authorLink = document.createElement('a');
 
-    // Set the link's href attribute to a specific author identifier
-    authorLink.setAttribute('href', `#author-${author}`);
+    // Extract the author information from the article data or other relevant source
+    const author = ''; // Extract the author information here from the article
 
-    // Set the text content of the author link
+    // Set the href attribute of the author link
+    authorLink.setAttribute('href', `#author-${author}`);
+    // Set the displayed text of the author link
     authorLink.textContent = `by ${author}`;
 
-    // Append the author link to the author wrapper in the article
+    // Append the author link to the author information wrapper in the article
     authorWrapper.appendChild(authorLink);
+    // Set the data-author attribute for each article
+    article.setAttribute('data-author', author);
   });
 }
 
-// Call the function to generate authors for each article
+function addClickListenersToAuthors() {
+  // Find all author links within the article
+  const authorLinks = document.querySelectorAll(optArticleAuthorSelector + ' a');
+
+  // Attach a click event listener to each author link
+  authorLinks.forEach(author => {
+    author.addEventListener('click', authorClickHandler);
+  });
+}
+
+function authorClickHandler(event) {
+  event.preventDefault();
+
+  // Identify the clicked author link
+  const clickedElement = this;
+  // Extract the author identifier from the href attribute of the clicked author link
+  const href = clickedElement.getAttribute('href');
+  const author = href.replace('#author-', '');
+
+  // Generate title links based on the author attribute and display them
+  generateTitleLinks(`[data-author="${author}"]`);
+}
+
 generateAuthors();
+addClickListenersToAuthors();
