@@ -71,6 +71,9 @@ function generateTitleLinks(customSelector = '') {
 
 
 function generateTags() {
+  // create a new variable allTags with an empty array //
+  let allTags = [];
+
   // find all articles
   const articles = document.querySelectorAll('.post');
 
@@ -93,6 +96,13 @@ function generateTags() {
       // generate HTML of the link
       const tagHTML = `<li><a href="#tag-${tag}">${tag}</a></li>`;
 
+      // check if this link is NOT already in allTags //
+      if(allTags.indexOf(linkHTML) == -1){
+
+        // add generated code to allTags array //
+        allTags.push(linkHTML);
+      }
+
       // add generated code to html variable
       html += tagHTML;
     }
@@ -102,6 +112,12 @@ function generateTags() {
     tagsWrapper.innerHTML = html;
   });
   // END LOOP: for every article
+
+  // find list of tags in right column //
+  const tagList = document.querySelector(optTagsListSelector);
+
+  // add html from allTags to tagList //
+  tagList.innerHTML = allTags.join(' ');
 }
 
 generateTags();
