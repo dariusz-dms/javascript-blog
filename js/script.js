@@ -72,7 +72,7 @@ function generateTitleLinks(customSelector = '') {
 
 
 function generateTags() {
-  // create a new variable allTags with an empty array //
+  // create a new variable allTags with an empty object //
   let allTags = [];
 
   // find all articles
@@ -98,11 +98,16 @@ function generateTags() {
       const tagHTML = `<li><a href="#tag-${tag}">${tag}</a></li>`;
 
       // check if this link is NOT already in allTags //
-      if (allTags.indexOf(tagHTML) == -1) {
+      if(!allTags[tag]) {
 
         // add generated code to allTags array //
-        allTags.push(tagHTML);
+        allTags[tag] = 1;
+      } else {
+        allTags[tag]++;
       }
+      // add HTML from allTags to tagList */
+      // tagList.innerHTML = allTags.join(' ');
+      console.log(allTags);
 
       // add generated code to html variable
       html += tagHTML;
