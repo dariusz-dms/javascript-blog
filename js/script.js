@@ -1,3 +1,10 @@
+// Call generateAuthors and addClickListenersToAuthors function after the HTML structure is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  generateAuthors();
+  addClickListenersToAuthors();
+});
+
+
 const optArticleSelector = '.post';
 const optTitleSelector = '.post-title';
 const optTitleListSelector = '.titles';
