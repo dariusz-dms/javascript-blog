@@ -196,7 +196,7 @@ function generateTags() {
     tagList.innerHTML = allTags.join(' ');
   }
 
-  // find all links to tags
+// find all links to tags
 function addClickListenersToTags(){
     const tagLinks = document.querySelectorAll('.post-tags a');
 
