@@ -4,6 +4,8 @@ const optTitleListSelector = '.titles';
 const optArticleTagsSelector = '.post-tags .list';
 const optArticleAuthorSelector = '.post-author';
 const optTagsListSelector = '.tags.list';
+const optCloudClassCount = 5;
+const optCloudClassPrefix = 'tag-size-';
 
 function clearTitleList() {
   const titleList = document.querySelector(optTitleListSelector);
@@ -105,6 +107,20 @@ function tagClickHandler(event){
   // execute function "generateTitleLinks" with article selector as argument
   generateTitleLinks('[data-tags~="' + tag + '"]');
 }
+
+function calculateTagClass(count, params) {
+  // Normalize the count within the range of min and max values
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+
+  // Calculate the percentage of the count within the range
+  const percentage = normalizedCount / normalizedMax;
+
+  // Calculate the class number based on the percentage and the specified class count
+  const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+
+  // Return the constructed tag class by combining the prefix with the calculated class number
+  return optCloudClassPrefix + classNumber;
 
 function generateTags() {
   // create a new variable allTags with an empty object //
