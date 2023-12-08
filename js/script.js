@@ -128,7 +128,6 @@ function generateTags() {
 
 generateTags();
 
-// Handle click events on tags
 function tagClickHandler(event){
   // prevent default action for this event
   event.preventDefault();
@@ -152,7 +151,7 @@ function tagClickHandler(event){
   });
   // END LOOP: for each active tag link
   // find all tag links with "href" attribute equal to the "href" constant
-  const sameTagLinks = document.querySelectorAll(`a[href="${href}"]`);
+  const sameTagLinks = document.querySelectorAll('a[href="' + href + '"]');
 
   // START LOOP: for each found tag link
   sameTagLinks.forEach(tagLink => {
@@ -162,7 +161,7 @@ function tagClickHandler(event){
   // END LOOP: for each found tag link
 
   // execute function "generateTitleLinks" with article selector as argument
-  generateTitleLinks(`[data-tags~="${tag}"]`);
+  generateTitleLinks('[data-tags~="' + tag + '"]');
 
 }
 // find all links to tags
@@ -176,9 +175,6 @@ function addClickListenersToTags(){
   });
   // END LOOP: for each link
 }
-  // Call generateTags function after the HTML structure is loaded
-  document.addEventListener('DOMContentLoaded', function() {
-  generateTags();
 
 addClickListenersToTags();
 
@@ -228,11 +224,6 @@ function authorClickHandler(event) {
   // Generate title links based on the author attribute and display them
   generateTitleLinks(`[data-author="${author}"]`);
 }
-
-  // Call generateTags function after the HTML structure is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  generateTags();
-});
 
 generateAuthors();
 addClickListenersToAuthors();
