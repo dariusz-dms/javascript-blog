@@ -106,7 +106,7 @@ function generateTags() {
         allTags[tag]++;
       }
       // add HTML from allTags to tagList */
-      // tagList.innerHTML = allTags.join(' ');
+      tagList.innerHTML = allTags.join(' ');
       console.log(allTags);
 
       // add generated code to html variable
