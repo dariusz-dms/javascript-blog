@@ -187,6 +187,10 @@ function generateTags() {
   // add html from allTags to tagList //
   tagList.innerHTML = allTags.join(' ');
 }
+// Call generateTags() within the DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', function() {
+  generateTags();
+});
 
 generateTags();
 
