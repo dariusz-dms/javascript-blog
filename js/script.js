@@ -130,7 +130,7 @@ function calculateTagClass(count, params) {
   // Return the constructed tag class by combining the prefix with the calculated class number
   return optCloudClassPrefix + classNumber;
 
-  function generateTags() {
+function generateTags() {
     // create a new variable allTags with an empty object //
     let allTags = {};
 
@@ -197,7 +197,7 @@ function calculateTagClass(count, params) {
   }
 
   // find all links to tags
-  function addClickListenersToTags(){
+function addClickListenersToTags(){
     const tagLinks = document.querySelectorAll('.post-tags a');
 
     // START LOOP: for each link
@@ -209,7 +209,7 @@ function calculateTagClass(count, params) {
   }
 
 
-  function generateAuthors() {
+function generateAuthors() {
     const articles = document.querySelectorAll(optArticleSelector);
 
     articles.forEach(article => {
