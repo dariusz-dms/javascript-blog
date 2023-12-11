@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
   addClickListenersToAuthors();
 });
 
-
 const optArticleSelector = '.post';
 const optTitleSelector = '.post-title';
 const optTitleListSelector = '.titles';
@@ -258,7 +257,6 @@ function generateAuthors() {
     // Set the generated HTML as the content of the authors list container
     authorList.innerHTML = authorsHTML;
   }
-
 }
 
 function addClickListenersToAuthors() {
@@ -283,9 +281,3 @@ function authorClickHandler(event) {
   // Generate title links based on the author attribute and display them
   generateTitleLinks(`[data-author="${author}"]`);
 }
-
-// Call generateAuthors and addClickListenersToAuthors function after the HTML structure is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  generateAuthors();
-  addClickListenersToAuthors();
-});
