@@ -128,6 +128,7 @@ function calculateTagClass(count, params) {
 
   // Return the constructed tag class by combining the prefix with the calculated class number
   return optCloudClassPrefix + classNumber;
+}
 
 function generateTags() {
     // create a new variable allTags with an empty object //
@@ -162,8 +163,8 @@ function generateTags() {
         } else {
           allTags[tag]++;
         }
-        const tagsParams = calculateTagsParams(allTags);
-        console.log('tagsParams:', tagsParams)
+        // const tagsParams = calculateTagsParams(allTags);
+        // console.log('tagsParams:', tagsParams)
 
         // [NEW] create variable for all links HTML code //
         let allTagsHTML = '';
@@ -176,6 +177,7 @@ function generateTags() {
         // [NEW] END LOOP: for each tag in allTags: //
 
         //[NEW] add HTML from allTagsHTML to tagList //
+        const tagList = document.querySelector(optTagsListSelector);
         tagList.innerHTML = allTagsHTML;
 
         // add generated code to html variable
@@ -192,10 +194,10 @@ function generateTags() {
     const tagList = document.querySelector(optTagsListSelector);
 
     // add html from allTags to tagList //
-    tagList.innerHTML = allTags.join(' ');
-  }
+    tagList.innerHTML = Object.keys(allTags).join(' ');
+}
 
-  // find all links to tags
+// find all links to tags
 function addClickListenersToTags(){
     const tagLinks = document.querySelectorAll('.post-tags a');
 
@@ -205,8 +207,7 @@ function addClickListenersToTags(){
       tag.addEventListener('click', tagClickHandler);
     });
   // END LOOP: for each link
-  }
-
+}
 
 function generateAuthors() {
     const articles = document.querySelectorAll(optArticleSelector);
@@ -256,7 +257,6 @@ function generateAuthors() {
 
     // Set the generated HTML as the content of the authors list container
     authorList.innerHTML = authorsHTML;
-  }
 }
 
 function addClickListenersToAuthors() {
