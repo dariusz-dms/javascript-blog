@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
   titleClickHandler();
   generateTitleLinks();
   authorClickHandler();
-
 });
 
 const optArticleSelector = '.post';
