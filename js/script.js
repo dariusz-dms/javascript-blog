@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
   generateTags();
   addClickListenersToTags();
   calculateTagClass();
+  clearTitleList();
+  titleClickHandler();
+  generateTitleLinks();
+  authorClickHandler();
+
 });
 
 const optArticleSelector = '.post';
