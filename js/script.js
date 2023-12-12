@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   addClickListenersToAuthors();
   generateTags();
   addClickListenersToTags();
+  calculateTagClass();
 });
 
 const optArticleSelector = '.post';
