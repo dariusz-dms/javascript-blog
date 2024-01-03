@@ -99,7 +99,7 @@ body {
 /* Post */
 .post {
   display: none;
-  &.active { /* Poprawione wcięcie */
+    &.active {
     display: block;
   }
 }
@@ -110,10 +110,10 @@ body {
 
 .post-tags {
   display: flex;
-  .p {
+    .p {
     margin: 0 10px 0 0;
   }
-  .list-horizontal li a {
+    .list-horizontal li a {
     padding: 5px;
   }
 }
