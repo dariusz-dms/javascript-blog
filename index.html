@@ -222,6 +222,18 @@
           </main>
         </div>
       </div>
-      <script src="js/script.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+      generateAuthors();
+      addClickListenersToAuthors();
+      generateTags();
+      addClickListenersToTags();
+      calculateTagClass();
+      clearTitleList();
+      titleClickHandler();
+      generateTitleLinks();
+      authorClickHandler();
+    });
+      </script>/script>
 </body>
 </html>
