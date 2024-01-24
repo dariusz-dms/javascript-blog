@@ -78,14 +78,14 @@ body {
   margin: 0;
   padding: 0;
 
-  .active {
+  &.active {
     font-weight: bold;
   }
-}
 
-.list-horizontal {
-  li {
-    display: inline-block;
+  &-horizontal {
+    li {
+      display: inline-block;
+    }
   }
 }
 
@@ -99,6 +99,7 @@ body {
 /* Post */
 .post {
   display: none;
+
   &.active {
     display: block;
   }
@@ -110,9 +111,11 @@ body {
 
 .post-tags {
   display: flex;
+
   .p {
     margin: 0 10px 0 0;
   }
+
   .list-horizontal li a {
     padding: 5px;
   }
