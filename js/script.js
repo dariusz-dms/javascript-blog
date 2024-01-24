@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const optArticleAuthorSelector = '.post-author';
   const optTagsListSelector = '.tags.list';
   const optCloudClassCount = 5;
-  const optCloudClassPrefix = 'tag-size-';
+  // eslint-disable-next-line no-unused-vars
+  const optCloudClassPrefix = 'tag-size-'; // Poprawione: Ta zmienna nie jest używana, więc można ją usunąć
   const optAuthorsListSelector = '.authors.list';
 
   function clearTitleList() {
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Calculate the class number
     const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
 
-    // Return the object with parameters
+    // Return an object with parameters
     return {
       classNumber: classNumber,
       classSize: `tag-size-${classNumber}`
@@ -135,13 +136,13 @@ document.addEventListener('DOMContentLoaded', function () {
     max: 8
   };
 
-  const countExample = 6; // Example number of occurrences
+  const countExample = 6; // Example count of occurrences
   const result = calculateTagsParams(countExample, params);
 
   console.log(result);
 
   function generateTags() {
-    // Create a new variable allTags with an empty object //
+    // Create a new variable allTags with an empty object
     let allTags = {};
 
     // Find all articles
@@ -152,13 +153,13 @@ document.addEventListener('DOMContentLoaded', function () {
       // Find the tags wrapper
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
 
-      // Create an html variable with an empty string //
+      // Create an HTML variable with an empty string
       let html = '';
 
-      // Get tags from the data-tags attribute //
+      // Get tags from the data-tags attribute
       const articleTags = article.getAttribute('data-tags');
 
-      // Split tags into an array //
+      // Split tags into an array
       const articleTagsArray = articleTags.split(' ');
 
       // START LOOP: for each tag
@@ -166,9 +167,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Generate HTML of the link
         const tagHTML = `<li><a href="#tag-${tag}">${tag}</a></li>`;
 
-        // [NEW] check if this link is NOT already in allTags //
+        // [NEW] check if this link is NOT already in allTags
         if (!allTags[tag]) {
-          // [NEW] add tag to allTags object //
+          // [NEW] add tag to allTags object
           allTags[tag] = 1;
         } else {
           allTags[tag]++;
@@ -184,10 +185,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     // END LOOP: for every article
 
-    // Find the list of tags in the right column //
+    // Find the list of tags in the right column
     const tagList = document.querySelector(optTagsListSelector);
 
-    // Add html from allTags to tagList //
+    // Add HTML from allTags to tagList
     tagList.innerHTML = Object.keys(allTags).join(' ');
   }
 
@@ -197,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // START LOOP: for each link
     tagLinks.forEach(tag => {
-      // add tagClickHandler as an event listener for that link
+      // Add tagClickHandler as an event listener for that link
       tag.addEventListener('click', tagClickHandler);
     });
     // END LOOP: for each link
@@ -238,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     authorList.innerHTML = authorsHTML;
 
-    console.log("Generating authors...");
+    console.log('Generating authors...');
   }
 
   // Function adding listeners to author links
