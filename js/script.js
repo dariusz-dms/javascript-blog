@@ -55,18 +55,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Iteruj przez każdy artykuł
     articles.forEach(article => {
-      // Pobierz ID, tytuł i utwórz HTML linka dla każdego artykułu
+      // Get the ID, title, and create link HTML for each article
       const articleId = article.id;
       const titleElement = article.querySelector(optTitleSelector);
       const articleTitle = titleElement.textContent;
       const linkHTML = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`;
 
-      // Dodaj wygenerowany HTML linka do listy tytułów
+      // Add the generated link HTML to the list of titles
       const titleList = document.querySelector(optTitleListSelector);
       titleList.innerHTML += linkHTML;
     });
 
-    // Pobierz wszystkie linki w tytułach i dodaj do nich nasłuchiwacze zdarzeń kliknięcia
+    // Get all links within titles and add click event listeners to them
     const links = document.querySelectorAll('.titles a');
     links.forEach(link => {
       link.addEventListener('click', titleClickHandler);
@@ -74,134 +74,133 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function tagClickHandler(event) {
-    // Zapobiegnij domyślnej akcji dla tego zdarzenia
+    // Prevent the default action for this event
     event.preventDefault();
 
-    // Stwórz nową stałą "clickedElement" i przypisz jej wartość "this"
+    // Create a new constant named "clickedElement" and give it the value of "this"
     const clickedElement = this;
 
-    // Stwórz nową stałą "href" i odczytaj atrybut "href" klikniętego elementu
+    // Create a new constant "href" and read the attribute "href" of the clicked element
     const href = clickedElement.getAttribute('href');
 
-    // Stwórz nową stałą "tag" i wyodrębnij tag z stałej "href"
+    // Create a new constant "tag" and extract the tag from the "href" constant
     const tag = href.replace('#tag-', '');
 
-    // Znajdź wszystkie linki tagów z klasą active
+    // Find all tag links with class active
     const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
 
-    // ROZPOCZNIJ PĘTLĘ: dla każdego aktywnego linku tagu
+    // START LOOP: for each active tag link
     activeTagLinks.forEach(tagLink => {
-      // usuń klasę active
+      // remove class active
       tagLink.classList.remove('active');
     });
-    // ZAKOŃCZ PĘTLĘ: dla każdego aktywnego linku tagu
-    // Znajdź wszystkie linki tagów z atrybutem "href" równym stałej "href"
+    // END LOOP: for each active tag link
+    // Find all tag links with "href" attribute equal to the "href" constant
     const sameTagLinks = document.querySelectorAll('a[href="' + href + '"]');
 
-    // ROZPOCZNIJ PĘTLĘ: dla każdego znalezionego linku tagu//
+    // START LOOP: for each found tag link//
     sameTagLinks.forEach(tagLink => {
-      // dodaj klasę active
+      // add class active
       tagLink.classList.add('active');
     });
-    // ZAKOŃCZ PĘTLĘ: dla każdego znalezionego linku tagu//
+    // END LOOP: for each found tag link//
 
-    // wykonaj funkcję "generateTitleLinks" z selektorem artykułu jako argumentem
+    // Execute the function "generateTitleLinks" with the article selector as an argument
     generateTitleLinks('[data-tags~="' + tag + '"]');
   }
 
   function calculateTagsParams(count, params) {
-    // Oblicz znormalizowaną liczbę wystąpień
+    // Calculate the normalized count of occurrences
     const normalizedCount = count - params.min;
 
-    // Oblicz szerokość zakresu
+    // Calculate the width of the range
     const normalizedMax = params.max - params.min;
 
-    // Oblicz procentową wartość
+    // Calculate the percentage value
     const percentage = normalizedCount / normalizedMax;
 
-    // Oblicz numer klasy
-    const optCloudClassCount = 5; // Liczba klas dla chmurki tagów
+    // Calculate the class number
     const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
 
-    // Zwróć obiekt z parametrami
+    // Return the object with parameters
     return {
       classNumber: classNumber,
       classSize: `tag-size-${classNumber}`
     };
   }
 
-  // Przykład użycia funkcji
+  // Example of using the function
   const params = {
     min: 2,
     max: 8
   };
 
-  const countExample = 6; // Przykładowa liczba wystąpień
+  const countExample = 6; // Example number of occurrences
   const result = calculateTagsParams(countExample, params);
 
   console.log(result);
 
   function generateTags() {
-    // stwórz nową zmienną allTags z pustym obiektem //
+    // Create a new variable allTags with an empty object //
     let allTags = {};
 
-    // znajdź wszystkie artykuły
+    // Find all articles
     const articles = document.querySelectorAll('.post');
 
-    // ROZPOCZNIJ PĘTLĘ: dla każdego artykułu:
+    // START LOOP: for every article:
     articles.forEach(article => {
-      // znajdź opakowanie tagów
+      // Find the tags wrapper
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
 
-      // utwórz zmienną html z pustym ciągiem //
+      // Create an html variable with an empty string //
       let html = '';
 
-      // pobierz tagi z atrybutu data-tags //
+      // Get tags from the data-tags attribute //
       const articleTags = article.getAttribute('data-tags');
 
-      // podziel tagi na tablicę //
+      // Split tags into an array //
       const articleTagsArray = articleTags.split(' ');
 
-      // ROZPOCZNIJ PĘTLĘ: dla każdego tagu
+      // START LOOP: for each tag
       for (let tag of articleTagsArray) {
-        // wygeneruj HTML linka
+        // Generate HTML of the link
         const tagHTML = `<li><a href="#tag-${tag}">${tag}</a></li>`;
 
-        // [NOWE] sprawdź, czy ten link NIE jest już w allTags //
+        // [NEW] check if this link is NOT already in allTags //
         if (!allTags[tag]) {
-          // [NOWE] dodaj tag do obiektu allTags //
+          // [NEW] add tag to allTags object //
           allTags[tag] = 1;
         } else {
           allTags[tag]++;
         }
 
-        // dodaj wygenerowany kod do zmiennej html
+        // Add generated code to the html variable
         html += tagHTML;
       }
-      // ZAKOŃCZ PĘTLĘ: dla każdego tagu
+      // END LOOP: for each tag
 
-      // wstaw HTML wszystkich linków do opakowania tagów
+      // Insert HTML of all the links into the tags wrapper
       tagsWrapper.innerHTML = html;
     });
-    // ZAKOŃCZ PĘTLĘ: dla każdego artykułu
+    // END LOOP: for every article
 
-    // znajdź listę tagów w prawej kolumnie //
+    // Find the list of tags in the right column //
     const tagList = document.querySelector(optTagsListSelector);
 
-    // dodaj HTML z allTags do tagList //
+    // Add html from allTags to tagList //
     tagList.innerHTML = Object.keys(allTags).join(' ');
   }
 
-  // znajdź wszystkie linki do tagów
+  // Find all links to tags
   function addClickListenersToTags() {
     const tagLinks = document.querySelectorAll('.post-tags a');
 
-    // ROZPOCZNIJ PĘTLĘ: dla każdego linku
+    // START LOOP: for each link
     tagLinks.forEach(tag => {
-      // dodaj tagClickHandler jako nasłuchiwacz zdarzeń dla tego linku
+      // add tagClickHandler as an event listener for that link
       tag.addEventListener('click', tagClickHandler);
     });
-    // ZAKOŃCZ PĘTLĘ: dla każdego linku
+    // END LOOP: for each link
   }
 
   function generateAuthors() {
@@ -210,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
     articles.forEach(article => {
       const authorWrapper = article.querySelector(optArticleAuthorSelector);
       const authorLink = document.createElement('a');
-      const author = ''; // Pobierz informacje o autorze z artykułu
+      const author = ''; // Get author information from the article
 
       authorLink.setAttribute('href', `#author-${author}`);
       authorLink.textContent = `by ${author}`;
@@ -239,10 +238,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     authorList.innerHTML = authorsHTML;
 
-    console.log("Generowanie autorów...");
+    console.log("Generating authors...");
   }
 
-  // Funkcja dodająca nasłuchiwacze do linków autora
+  // Function adding listeners to author links
   function addClickListenersToAuthors() {
     const authorLinks = document.querySelectorAll(optArticleAuthorSelector + ' a');
 
@@ -254,21 +253,21 @@ document.addEventListener('DOMContentLoaded', function () {
   function authorClickHandler(event) {
     event.preventDefault();
 
-    // Zidentyfikuj kliknięty link autora
+    // Identify the clicked author link
     const clickedElement = this;
-    // Wyodrębnij identyfikator autora z atrybutu href klikniętego linku autora
+    // Extract the author identifier from the href attribute of the clicked author link
     const href = clickedElement.getAttribute('href');
     const author = href.replace('#author-', '');
 
-    // Wygeneruj linki tytułów na podstawie atrybutu autora i wyświetl je
+    // Generate title links based on the author attribute and display them
     generateTitleLinks(`[data-author="${author}"]`);
   }
 
   generateTags();
   addClickListenersToTags();
-  // calculateTagClass(); // Ta funkcja nie jest zdefiniowana w Twoim kodzie
+  // calculateTagClass(); // This function is not defined in your code
   clearTitleList();
-  // titleClickHandler(); // Nie trzeba wywoływać tej funkcji tutaj
+  // titleClickHandler(); // You don't need to call this function here
   generateTitleLinks();
   generateAuthors();
   addClickListenersToAuthors();
