@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const optArticleAuthorSelector = '.post-author';
   const optTagsListSelector = '.tags.list';
   const optCloudClassCount = 5;
-  // eslint-disable-next-line no-unused-vars
-  const optCloudClassPrefix = 'tag-size-'; // Poprawione: Ta zmienna nie jest używana, więc można ją usunąć
+  const optCloudClassPrefix = 'tag-size-';
   const optAuthorsListSelector = '.authors.list';
 
   function clearTitleList() {
